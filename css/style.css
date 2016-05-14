@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+body{
+  font-family: 'Roboto Slab', serif;
+  color:black;
+}
+img {
+    max-width: 400px;
+    height: auto;
+}
+.jumbotron{
+  background-color: #791B85;
+  color:white;
+  text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+  text-align:center;
+  margin-top:-40px;
+}
+.row{
+  padding: 25px 100px 25px 100px;
+}
+.circle{
+  border-radius: 50%;
+	width: 40px;
+	height: 40px; 
+  float:left;
+}
+footer{
+ color: #791B85;
+ text-align:center;
+ font-size: 18px; 
+ padding-bottom: 20px;
+}
+footer a{
+  color:#791B85;
+}
+p{
+  padding-top:5px;
+  padding-left:50px;
+}
