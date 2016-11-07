@@ -1,26 +1,19 @@
-var channels = ['brunofin', 'esl_sc2', 'freecodecamp', 'fengb', 'storbeck', 'terakilobyte', 'habathcx', 'RobotCaleb', 'ogamingsc2', 'noobs2ninjas', 'beohoff', 'codingrainbow'];
+var channels = ['esl_sc2', 'freecodecamp', 'cretetion', 'storbeck', 'habathcx', 'RobotCaleb', 'ogamingsc2', 'noobs2ninjas'];
 var count = 1;
 for (var j = 0; j < channels.length; j++) {
   $.ajax({
-    url: 'https://api.twitch.tv/kraken/streams/' + channels[j] + '?callback=?',
+    url: 'https://wind-bow.hyperdev.space/twitch-api/streams/' + channels[j] + '?callback=?',
     dataType: 'jsonp',
     success: function(data) {
       if (data.stream === null) {
-        $.ajax({
-          url: data._links.channel,
-          //async: false,
-          dataType: 'jsonp',
-          success: function(info) {
-            $('#label' + count).append(info.display_name);
-            $('#status' + count).append(info.display_name + ' is offline. Come back later!');
-            if (info.logo !== null) {
-              $('#logo' + count).attr('src', info.logo);
-            }
-            $('#logo' + count).wrap('<a href=' + info.url + ' target="_blank"></a>')
-            count++;
-          }
-        });
-
+        var ch = data._links.channel;
+        var ind = ch.lastIndexOf('/');
+        var name = ch.slice(ind+1);
+        $('#label'+count).append(name);
+        $('#status' + count).append('Looks like '+ name + ' is offline. Come back later!');
+        $('#' + count).addClass('hidden');
+        $('#logo' + count).addClass('hidden');
+        count++;
       }
       if (data.error === 'Unprocessable Entity') {
         var a = data.message.indexOf("'");
